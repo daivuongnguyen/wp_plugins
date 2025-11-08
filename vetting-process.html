@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The "Ironclad" Vetting Process - Legacy Domains</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: #00d4ff;
+            position: relative;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #e0e0e0;
+        }
+
+        .hero .subtitle strong {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #fff;
+            padding: 60px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stats-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .stats-header h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .stats-header .philosophy {
+            color: #00d4ff;
+            font-weight: 700;
+        }
+
+        .stats-header p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #00d4ff;
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .badge h3 {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 5px;
+        }
+
+        /* Phase Sections */
+        .phase-section {
+            padding: 80px 20px;
+        }
+
+        .phase-section:nth-child(even) {
+            background: #fff;
+        }
+
+        .phase-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .phase-number {
+            display: inline-block;
+            background: #00d4ff;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .phase-header h2 {
+            font-size: 2.2rem;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .phase-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Step Cards */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .phase-section:nth-child(even) .step-card {
+            background: #f8f9fa;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #00d4ff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Subsections */
+        .subsection {
+            margin-top: 50px;
+        }
+
+        .subsection-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .subsection-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subsection-header p {
+            color: #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        /* Holy Grail Highlight */
+        .holy-grail-section {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3d6 100%);
+            border: 3px solid #ffc107;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .holy-grail-section h3 {
+            color: #1a1a2e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .holy-grail-icon {
+            font-size: 2rem;
+        }
+
+        /* Excellence Section */
+        .excellence-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .excellence-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .excellence-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: #e0e0e0;
+        }
+
+        .excellence-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .excellence-stat {
+            text-align: center;
+        }
+
+        .excellence-stat .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00d4ff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .excellence-stat .label {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #00b8e6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-header h2,
+            .phase-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-highlight {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .text-emphasis {
+            font-style: italic;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>The <span class="highlight">"Ironclad"</span> Vetting Process</h1>
+            <p class="subtitle">
+                This is our <strong>'Anti-SpamBrain' audit</strong>. We don't just check DR scores; we hunt for the
+                <strong>'Holy Grail Combo'</strong> (News + .GOV links) and verify the <strong>'Anti-Spam' signals</strong>
+                (clean history, natural anchors) that matter for a high-ROI, penalty-proof asset.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-header">
+                <h2>Our Vetting Philosophy: <span class="philosophy">Links > Metrics</span></h2>
+                <p>...quality assurance for savvy SEOs. We focus on what <em>actually</em> works—authentic link equity—not inflated metrics.</p>
+            </div>
+            <div class="badges">
+                <div class="badge">
+                    <div class="badge-icon">📋</div>
+                    <h3>18-Step Audit</h3>
+                    <p>Comprehensive verification process</p>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">🛡️</div>
+                    <h3>Spam-Proof Guarantee</h3>
+                    <p>Thoroughly vetted against spam signals</p>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">✓</div>
+                    <h3>Expert Verified</h3>
+                    <p>Manual review by SEO specialists</p>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">🎯</div>
+                    <h3>Penalty-Free Guarantee</h3>
+                    <p>Clean history, safe to use</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 1: Automated Screening -->
+    <section class="phase-section">
+        <div class="container">
+            <div class="phase-header">
+                <span class="phase-number">PHASE 1</span>
+                <h2>Automated Screening & Data Aggregation</h2>
+                <p>Advanced AI-powered systems scan thousands of domains daily to identify potential candidates</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Initial Domain Discovery</h3>
+                    <p>Our proprietary algorithms monitor expiring and dropped domains across multiple registrars, ensuring we capture only the highest-potential assets, flagging domains with <span class="text-emphasis">potential 'Holy Grail' links</span> for manual review.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>Automated Metrics Collection</h3>
+                    <p>We compile <span class="text-emphasis">baseline</span> authority metrics from leading SEO platforms (Ahrefs, Moz, Majestic), creating a comprehensive data snapshot for each domain.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>AI-Powered Pre-Screening</h3>
+                    <p>Machine learning models filter out obvious spam, penalized domains, and low-quality sites, ensuring only promising candidates proceed to manual review.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 2: Expert Manual Analysis -->
+    <section class="phase-section">
+        <div class="container">
+            <div class="phase-header">
+                <span class="phase-number">PHASE 2</span>
+                <h2>The "Sage" Audit (Where We Find the Real Value)</h2>
+                <p>Our expert team conducts deep forensic analysis on each domain</p>
+            </div>
+
+            <!-- Holy Grail Combo Audit -->
+            <div class="holy-grail-section">
+                <h3><span class="holy-grail-icon">🏆</span> A. "Holy Grail" Combo Audit</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <span class="step-number">4</span>
+                        <h3>Global News Link Verification</h3>
+                        <p>We manually confirm the existence and quality of editorial links from top-tier press sources (BBC, NYT, Reuters, The Guardian, etc.). These links provide unmatched trust signals.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">5</span>
+                        <h3>Institutional Trust Audit</h3>
+                        <p>We verify links from .GOV / .EDU sources, confirming their editorial quality and contextual relevance. These institutional backlinks are gold for SEO.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backlink Profile Forensics -->
+            <div class="subsection">
+                <div class="subsection-header">
+                    <h3>B. Backlink Profile Forensics (Spam Check)</h3>
+                    <p>Deep dive into the domain's link ecosystem</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <span class="step-number">6</span>
+                        <h3>Link Quality Assessment</h3>
+                        <p>Manual review of top referring domains, analyzing relevance, authority, and editorial quality of each backlink source.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">7</span>
+                        <h3>Anchor Text Analysis</h3>
+                        <p>Verification of natural anchor text distribution. We flag over-optimized or spammy anchor profiles that could trigger penalties.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">8</span>
+                        <h3>Toxic Link Detection</h3>
+                        <p>Identification and documentation of any PBN links, spam networks, or low-quality sources in the backlink profile.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">9</span>
+                        <h3>Link Velocity Patterns</h3>
+                        <p>Analysis of historical link acquisition patterns to detect artificial link building or sudden suspicious spikes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical & Content Analysis -->
+            <div class="subsection">
+                <div class="subsection-header">
+                    <h3>C. Historical & Content Analysis (Anti-SpamBrain Check)</h3>
+                    <p>Ensuring clean history and compliance with Google's quality standards</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <span class="step-number">10</span>
+                        <h3>Wayback Machine Audit</h3>
+                        <p>Comprehensive review of the domain's historical content via Internet Archive, identifying any previous spam, adult content, or questionable practices.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">11</span>
+                        <h3>Penalty & Malware Screening</h3>
+                        <p>Verification through Google Search Console history (when available), blacklist databases, and security scanners to ensure zero penalty history.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">12</span>
+                        <h3>Content Quality Verification</h3>
+                        <p>Assessment of historical content quality, topical consistency, and editorial standards. We verify the domain maintained legitimate, valuable content.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">13</span>
+                        <h3>Domain Age & Stability</h3>
+                        <p>Verification of domain registration history, ownership changes, and operational consistency. Stable, long-held domains rank higher in our assessment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phase 3: Final Curation -->
+    <section class="phase-section">
+        <div class="container">
+            <div class="phase-header">
+                <span class="phase-number">PHASE 3</span>
+                <h2>Final Curation & Quality Assurance</h2>
+                <p>Only the top 2% of analyzed domains make it to our marketplace</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <span class="step-number">14</span>
+                    <h3>Comparative Value Analysis</h3>
+                    <p>We benchmark each domain against similar assets in the market, ensuring competitive pricing and genuine value proposition.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">15</span>
+                    <h3>Trust Flow Verification</h3>
+                    <p>Final validation of Majestic Trust Flow scores and citation flow ratios to confirm genuine authority signals.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">16</span>
+                    <h3>Niche Categorization</h3>
+                    <p>Accurate categorization by industry and use case (e.g., <strong>iGaming, Betting,</strong> Finance, Health, Tech) to help buyers find relevant assets.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">17</span>
+                    <h3>Documentation & Transparency</h3>
+                    <p>Creation of detailed domain reports including all metrics, backlink samples, historical snapshots, and our expert assessment notes.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">18</span>
+                    <h3>Final Quality Gate</h3>
+                    <p>Senior SEO expert performs final review to ensure the domain meets all quality criteria and are listed in our <span class="text-emphasis">cost-effective collection</span>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Excellence Standard -->
+    <section class="excellence-section">
+        <div class="container">
+            <h2>The Excellence Standard</h2>
+            <p>Our rigorous 18-step vetting process ensures you get <span class="text-emphasis">high-ROI</span> digital assets with <span class="text-emphasis">real</span> authority and <span class="text-emphasis">proven</span> clean history.</p>
+
+            <div class="excellence-stats">
+                <div class="excellence-stat">
+                    <span class="number">100%</span>
+                    <span class="label">Penalty Free</span>
+                </div>
+                <div class="excellence-stat">
+                    <span class="number">24h</span>
+                    <span class="label">Express Transfer</span>
+                </div>
+                <div class="excellence-stat">
+                    <span class="number">Expert</span>
+                    <span class="label">Reviewed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help Finding a High-ROI Asset?</h2>
+            <p>Our vetting specialists are here to help you identify the perfect domain for your project</p>
+            <a href="#contact" class="cta-button">Contact a Vetting Specialist</a>
+        </div>
+    </section>
+
+</body>
+</html>
